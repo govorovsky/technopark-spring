@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="mystring">mfadsfsddfd</string>
+    <string name="my_text">hello from code</string>
+    <string name="my_stirng_2">sfjkhfkjsd</string>
+    <string name="click_me">Click me</string>
+    <string name="open_activty">open activty</string>
+</resources>
