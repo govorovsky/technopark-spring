@@ -41,6 +41,13 @@ public class TimerActivity extends Activity {
                 startService(intent);
             }
         });
+        findViewById(R.id.battery).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(TimerActivity.this, BatteryActivity.class);
+                startActivity(intent);
+            }
+        });
 
         IntentFilter progressFilter = new IntentFilter();
         progressFilter.addAction(ACTION_TICK);

@@ -3,4 +3,5 @@
     <string name="stop">stop</string>
     <string name="start">start</string>
     <string name="finished">finished!</string>
+    <string name="battery_stats">battery stats</string>
 </resources>
