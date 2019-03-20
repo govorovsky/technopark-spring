@@ -19,6 +19,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".SecondActivity"/>
+        <activity android:name=".fragment_part.activity.TransactionActivity" />
+        <activity android:name=".fragment_part.activity.StateLossActivity" />
+        <activity android:name=".fragment_part.activity.MultiActionActivity" />
+        <activity android:name=".fragment_part.activity.LayoutFragmentActivity" />
+        <activity android:name=".fragment_part.activity.CooperationActivity" />
     </application>
 
 </manifest>

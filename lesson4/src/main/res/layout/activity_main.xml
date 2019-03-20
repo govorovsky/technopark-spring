@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:gravity="center_horizontal"
     tools:context=".BaseActivity">
 
     <Button
@@ -25,7 +26,35 @@
         android:textSize="40sp"
         android:id="@+id/dynamic_text"
         android:layout_height="wrap_content"/>
-    <!--android:freezesText="true"-->
 
+    <Button
+        android:id="@+id/btn_layout_fragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_layout_fragment" />
+
+    <Button
+        android:id="@+id/btn_transactions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_transactions"/>
+
+    <Button
+        android:id="@+id/btn_multi_action"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_multi_action"/>
+
+    <Button
+        android:id="@+id/btn_state_loss"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_state_loss"/>
+
+    <Button
+        android:id="@+id/btn_cooperation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_cooperation"/>
 
 </LinearLayout>
