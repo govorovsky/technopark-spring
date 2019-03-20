@@ -34,10 +34,16 @@
         android:text="@string/btn_layout_fragment" />
 
     <Button
-        android:id="@+id/btn_transactions"
+        android:id="@+id/btn_transactions_by_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/btn_transactions"/>
+        android:text="@string/btn_transactions_by_id"/>
+
+    <Button
+        android:id="@+id/btn_transactions_by_tag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_transactions_by_tag"/>
 
     <Button
         android:id="@+id/btn_multi_action"

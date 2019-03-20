@@ -9,7 +9,8 @@
     <string name="red_fragment">RED FRAGMENT</string>
     <string name="blue_fragment">BLUE FRAGMENT</string>
     <string name="green_fragment">GREEN FRAGMENT</string>
-    <string name="btn_transactions">Transactions</string>
+    <string name="btn_transactions_by_id">Transactions by id</string>
+    <string name="btn_transactions_by_tag">Transactions by tag</string>
     <string name="add_fragment">Add Fragment</string>
     <string name="add_to_back_stack">Add to BackStack</string>
     <string name="remove_fragment">Remove Fragment</string>

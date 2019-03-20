@@ -97,7 +97,7 @@ public abstract class BaseFragment extends Fragment {
         Log.d(getLogTag(), "onViewStateRestored");
     }
 
-    private String getLogTag() {
+    protected String getLogTag() {
         return getClass().getSimpleName();
     }
 }

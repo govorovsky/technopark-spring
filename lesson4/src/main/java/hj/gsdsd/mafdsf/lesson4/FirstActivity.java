@@ -11,7 +11,8 @@ import hj.gsdsd.mafdsf.lesson4.fragment_part.activity.CooperationActivity;
 import hj.gsdsd.mafdsf.lesson4.fragment_part.activity.LayoutFragmentActivity;
 import hj.gsdsd.mafdsf.lesson4.fragment_part.activity.MultiActionActivity;
 import hj.gsdsd.mafdsf.lesson4.fragment_part.activity.StateLossActivity;
-import hj.gsdsd.mafdsf.lesson4.fragment_part.activity.TransactionActivity;
+import hj.gsdsd.mafdsf.lesson4.fragment_part.activity.TransactionActivityById;
+import hj.gsdsd.mafdsf.lesson4.fragment_part.activity.TransactionActivityByTag;
 
 public class FirstActivity extends BaseActivity {
 
@@ -39,10 +40,6 @@ public class FirstActivity extends BaseActivity {
         initFragmentRelated();
     }
 
-
-
-
-
     private void initFragmentRelated() {
         findViewById(R.id.btn_layout_fragment).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,10 +48,17 @@ public class FirstActivity extends BaseActivity {
             }
         });
 
-        findViewById(R.id.btn_transactions).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.btn_transactions_by_id).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(FirstActivity.this, TransactionActivity.class));
+                startActivity(new Intent(FirstActivity.this, TransactionActivityById.class));
+            }
+        });
+
+        findViewById(R.id.btn_transactions_by_tag).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(FirstActivity.this, TransactionActivityByTag.class));
             }
         });
 
