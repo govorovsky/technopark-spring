@@ -61,7 +61,7 @@ public class TimerActivity extends Activity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        unregisterReceiver(mReceiver);
+        LocalBroadcastManager.getInstance(this).unregisterReceiver(mReceiver);
     }
 
     private class TimerBroadcastReceiver extends BroadcastReceiver {
