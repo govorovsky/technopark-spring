@@ -3,9 +3,9 @@ package hj.gsdsd.mafdsf.lesson4.fragment_part.activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import hj.gsdsd.mafdsf.lesson4.BaseActivity;
 import hj.gsdsd.mafdsf.lesson4.R;
 import hj.gsdsd.mafdsf.lesson4.fragment_part.fragment.GreenFragment;
 import hj.gsdsd.mafdsf.lesson4.fragment_part.fragment.RedFragment;
@@ -15,7 +15,7 @@ import hj.gsdsd.mafdsf.lesson4.fragment_part.fragment.RedFragment;
  * Activity для демонстрации того, что в рамках транзакции может выполняться любое количество
  * операций с фрагментами.
  */
-public class MultiActionActivity extends AppCompatActivity {
+public class MultiActionActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -18,7 +18,7 @@ import hj.gsdsd.mafdsf.lesson4.fragment_part.fragment.RedFragment;
  * В примере можно в произвольном порядке добавлять/удалять фрагменты и наблюдать за поведением
  * кнопки back на устройстве в зависимости от состояния флага "Add to back stack".
  */
-public class TransactionActivity extends AppCompatActivity {
+public class TransactionActivityById extends AppCompatActivity {
 
     private CheckBox backStackCheckbox;
 
