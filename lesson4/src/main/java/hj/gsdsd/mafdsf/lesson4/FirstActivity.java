@@ -15,6 +15,7 @@ import hj.gsdsd.mafdsf.lesson4.fragment_part.activity.TransactionActivity;
 
 public class FirstActivity extends BaseActivity {
 
+    public static final String STATE = "state";
     private TextView mText;
 
     @Override
@@ -22,6 +23,7 @@ public class FirstActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mText = findViewById(R.id.dynamic_text);
+        restoreState(savedInstanceState);
         findViewById(R.id.second).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -39,9 +41,23 @@ public class FirstActivity extends BaseActivity {
         initFragmentRelated();
     }
 
+    private void restoreState(Bundle savedInstanceState) {
+        if (savedInstanceState != null) {
+            String string = savedInstanceState.getString(STATE);
+            mText.setText(string);
+        }
+    }
 
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString(STATE, mText.getText().toString());
+    }
 
-
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+    }
 
     private void initFragmentRelated() {
         findViewById(R.id.btn_layout_fragment).setOnClickListener(new View.OnClickListener() {

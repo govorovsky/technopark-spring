@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Lecture6-Multithreading</string>
+    <string name="start_thread">Start Thread</string>
+    <string name="stop_thread">Stop Thread</string>
+    <string name="looper_and_handler">Looper &amp; Handler</string>
+    <string name="thread_pool">Thread Pool</string>
+    <string name="intent_service">Intent Service</string>
+    <string name="network">Network</string>
+    <string name="to_lower_case">To Lower Case</string>
+    <string name="to_upper_case">To Upper Case</string>
+    <string name="add_task">Add Task</string>
+    <string name="working">Doing some work…</string>
+    <string name="foreground">Run in foreground</string>
+    <string name="user_agent">User Agent</string>
+</resources>
