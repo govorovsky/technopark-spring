@@ -62,9 +62,6 @@ public class SqliteActivity extends AppCompatActivity {
             }
         });
 
-
-        AppDatabase db = Room.databaseBuilder(getApplicationContext(),
-                AppDatabase.class, "populus-database").build();
     }
 
     private void showStringList(final Collection<String> list) {

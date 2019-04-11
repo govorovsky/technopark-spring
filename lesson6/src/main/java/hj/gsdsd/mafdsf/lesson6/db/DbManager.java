@@ -44,7 +44,8 @@ class DbManager {
         executor.execute(new Runnable() {
             @Override
             public void run() {
-                insertInternal(text);
+//                insertInternal(text);
+                insertRoom(text);
             }
         });
     }
@@ -53,7 +54,8 @@ class DbManager {
         executor.execute(new Runnable() {
             @Override
             public void run() {
-                readAllInternal(listener);
+                readAllRoom(listener);
+//                readAllInternal(listener);
             }
         });
     }
@@ -72,7 +74,7 @@ class DbManager {
             return;
         }
 
-        SQLiteOpenHelper helper = new SQLiteOpenHelper(context, DB_NAME, null, VERSION) {
+        SQLiteOpenHelper helper = new SQLiteOpenHelper(context, DB_NAME, null, VERSION +2) {
 
             @Override
             public void onCreate(SQLiteDatabase db) {
@@ -94,7 +96,25 @@ class DbManager {
     private void insertInternal(String text) {
         checkInitialized();
 
-        database.execSQL("INSERT INTO " + TABLE_NAME + " (" + TEXT_COLUMN + ") VALUES (?)", new Object[]{text});
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(TEXT_COLUMN, text);
+        long insert = database.insert(TABLE_NAME, null, contentValues);
+//        database.execSQL("INSERT INTO " + TABLE_NAME + " (" + TEXT_COLUMN + ") VALUES (?)", new Object[]{text});
+    }
+
+    private void insertRoom(String text) {
+        SimpleEntity simpleEntity = new SimpleEntity();
+        simpleEntity.text = text;
+        AppDatabase.getInstance(context).getDao().insertAll(simpleEntity);
+    }
+
+    private void readAllRoom(final ReadAllListener<String> listener) {
+        List<SimpleEntity> list = AppDatabase.getInstance(context).getDao().getAllEntities();
+        ArrayList<String> strings = new ArrayList<>();
+        for (SimpleEntity simpleEntity : list) {
+            strings.add(simpleEntity.text);
+        }
+        listener.onReadAll(strings);
     }
 
     private void readAllInternal(final ReadAllListener<String> listener) {
