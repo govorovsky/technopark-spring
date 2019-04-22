@@ -1,7 +1,7 @@
 package hj.gsdsd.mafdsf.lesson6;
 
 import android.content.SharedPreferences;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.CheckBox;
 import android.widget.EditText;

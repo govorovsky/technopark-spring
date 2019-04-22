@@ -8,7 +8,7 @@
     android:padding="@dimen/activity_padding"
     tools:context="ru.mail.park.lecture6.ThreadPoolActivity">
 
-    <android.support.v7.widget.SwitchCompat
+    <androidx.appcompat.widget.SwitchCompat
         android:id="@+id/foreground"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

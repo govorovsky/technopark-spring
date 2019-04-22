@@ -1,7 +1,7 @@
 package hj.gsdsd.mafdsf.lesson7.presentation;
 
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import hj.gsdsd.mafdsf.lesson7.CredentialsRepository;
 import hj.gsdsd.mafdsf.lesson7.LoginPresenter;

@@ -1,6 +1,6 @@
 package hj.gsdsd.mafdsf.lesson7;
 
-import android.support.annotation.MainThread;
+import androidx.annotation.MainThread;
 
 public interface CredentialsRepository {
 

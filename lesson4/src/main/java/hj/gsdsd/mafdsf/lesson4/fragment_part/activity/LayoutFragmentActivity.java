@@ -1,7 +1,7 @@
 package hj.gsdsd.mafdsf.lesson4.fragment_part.activity;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 
 import hj.gsdsd.mafdsf.lesson4.R;
 
