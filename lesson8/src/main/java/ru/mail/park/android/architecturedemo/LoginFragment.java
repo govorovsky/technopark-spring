@@ -43,6 +43,13 @@ public class LoginFragment extends Fragment {
         final EditText password = view.findViewById(R.id.password);
         final Button loginBtn = view.findViewById(R.id.login_btn);
 
+        loginBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mLoginViewModel.login(login.getText().toString(), password.getText().toString());
+            }
+        });
+
         mLoginViewModel.getProgress().observe(this, new Observer<LoginViewModel.LoginState>() {
             @Override
             public void onChanged(LoginViewModel.LoginState loginState) {
