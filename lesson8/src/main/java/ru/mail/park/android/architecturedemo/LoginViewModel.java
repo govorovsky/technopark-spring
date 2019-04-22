@@ -1,8 +1,6 @@
 package ru.mail.park.android.architecturedemo;
 
 import android.app.Application;
-import android.os.Handler;
-import android.os.Looper;
 import android.text.TextUtils;
 
 import java.util.Objects;
@@ -41,16 +39,17 @@ public class LoginViewModel extends AndroidViewModel {
 
     private void requestLogin(final LoginData loginData) {
         mLoginState.postValue(LoginState.IN_PROGRESS);
-        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+        new AuthRepo(getApplication()).login(loginData.getLogin(), loginData.getPassword(), new AuthRepo.LoginProgress() {
             @Override
-            public void run() {
-                if (new LoginData("test", "test").equals(loginData)) {
-                    mLoginState.postValue(LoginState.SUCCESS);
-                } else {
-                    mLoginState.postValue(LoginState.FAILED);
-                }
+            public void onSuccess() {
+                mLoginState.postValue(LoginState.SUCCESS);
             }
-        }, 3000);
+
+            @Override
+            public void onFailed() {
+                mLoginState.postValue(LoginState.FAILED);
+            }
+        });
     }
 
     public LiveData<LoginState> getProgress() {
