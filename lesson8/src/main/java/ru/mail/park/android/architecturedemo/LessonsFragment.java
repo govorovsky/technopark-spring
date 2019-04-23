@@ -8,6 +8,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -83,6 +86,21 @@ public class LessonsFragment extends Fragment {
             holder.mPlace.setText(lesson.getPlace());
             holder.mDate.setText(mFormat.format(lesson.getDate()));
             holder.mRating.setText(String.valueOf(lesson.getRating()));
+
+            Glide.with(getContext())
+                    .load(resolveImage(lesson).imageUrl)
+                    .placeholder(R.drawable.icons8_question_mark_24)
+                    .timeout(3000)
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                    .into(holder.mIcon);
+        }
+
+        private ItemImg resolveImage(Lesson lesson) {
+            try {
+                return ItemImg.valueOf(lesson.getName().toUpperCase(Locale.US));
+            } catch (IllegalArgumentException e) {
+                return ItemImg.DEFAULT;
+            }
         }
 
         @Override
@@ -106,6 +124,18 @@ public class LessonsFragment extends Fragment {
             mName = itemView.findViewById(R.id.name);
             mRating = itemView.findViewById(R.id.rating);
             mIcon = itemView.findViewById(R.id.icon);
+        }
+    }
+
+    enum ItemImg {
+        ANDROID("http://1.bp.blogspot.com/-47ehH6VQ8Dg/U1io7iuzMoI/AAAAAAAAAa8/rh8gAHDL12k/s1600/android.jpg"),
+        IOS("https://img.etimg.com/thumb/msid-67229697,width-643,imgsize-126235,resizemode-4/applelogonew.jpg"),
+        DEFAULT("https://findicons.com/files/icons/2380/android_style_icons_r1/512/computer.png");
+
+        public final String imageUrl;
+
+        ItemImg(String imageUrl) {
+            this.imageUrl = imageUrl;
         }
     }
 }
