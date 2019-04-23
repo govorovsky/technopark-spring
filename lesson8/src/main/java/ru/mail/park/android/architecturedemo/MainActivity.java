@@ -4,7 +4,7 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements Router {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -14,11 +14,20 @@ public class MainActivity extends AppCompatActivity {
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.fragment_container, new LoginFragment(), "Login")
                     .commit();
+        } else {
+            openLessons();
         }
     }
 
     private boolean needAuth() {
         return !new AuthRepo(this).isLoggedIn();
+    }
+
+    @Override
+    public void openLessons() {
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fragment_container, new LessonsFragment(), "Lessons")
+                .commit();
     }
 }
 
