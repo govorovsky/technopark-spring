@@ -12,7 +12,8 @@ import ru.mail.park.android.architecturedemo.repo.LessonRepo;
 
 public class LessonsViewModel extends AndroidViewModel {
 
-    private LiveData<List<Lesson>> mLessons = new LessonRepo(getApplication()).getLessons();
+    private final LessonRepo mRepo = new LessonRepo(getApplication());
+    private LiveData<List<Lesson>> mLessons = mRepo.getLessons();
 
     public LessonsViewModel(@NonNull Application application) {
         super(application);
@@ -20,5 +21,9 @@ public class LessonsViewModel extends AndroidViewModel {
 
     public LiveData<List<Lesson>> getLessons() {
         return mLessons;
+    }
+
+    public void like(Lesson lesson) {
+        mRepo.like(lesson);
     }
 }
