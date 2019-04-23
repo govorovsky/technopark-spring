@@ -10,7 +10,7 @@ import androidx.lifecycle.LiveData;
 
 public class LessonsViewModel extends AndroidViewModel {
 
-    private LiveData<List<Lesson>> mLessons = new LessonRepo().getLessons();
+    private LiveData<List<Lesson>> mLessons = new LessonRepo(getApplication()).getLessons();
 
     public LessonsViewModel(@NonNull Application application) {
         super(application);

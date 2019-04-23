@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity implements Router {
 
     @Override
     public void openLessons() {
+        new LessonRepo(this).refresh();
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fragment_container, new LessonsFragment(), "Lessons")
                 .commit();
