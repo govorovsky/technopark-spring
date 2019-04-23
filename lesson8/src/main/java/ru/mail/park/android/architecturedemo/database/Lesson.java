@@ -1,9 +1,16 @@
-package ru.mail.park.android.architecturedemo;
+package ru.mail.park.android.architecturedemo.database;
 
 import java.util.Date;
 
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+import androidx.room.TypeConverters;
+
+@Entity
+@TypeConverters(value = {DateConverter.class})
 public class Lesson {
 
+    @PrimaryKey
     private int mId;
     private String mName;
     private Date mDate;

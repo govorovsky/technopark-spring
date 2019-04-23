@@ -20,6 +20,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import ru.mail.park.android.architecturedemo.database.Lesson;
 
 
 public class LessonsFragment extends Fragment {

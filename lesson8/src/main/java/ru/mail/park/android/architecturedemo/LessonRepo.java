@@ -15,24 +15,24 @@ import androidx.lifecycle.MutableLiveData;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import ru.mail.park.android.architecturedemo.database.AppDatabase;
+import ru.mail.park.android.architecturedemo.database.Lesson;
+import ru.mail.park.android.architecturedemo.database.LessonDao;
 import ru.mail.park.android.architecturedemo.network.ApiRepo;
 import ru.mail.park.android.architecturedemo.network.LessonApi;
 
 public class LessonRepo {
+    private final LessonDao mLessonsDao;
     private SimpleDateFormat mSimpleDateFormat = new SimpleDateFormat("dd.MM.yyyy", Locale.US);
     private final Context mContext;
-    private static MutableLiveData<List<Lesson>> mLessons = new MutableLiveData<>();
-
-    static {
-        mLessons.setValue(Collections.<Lesson>emptyList());
-    }
 
     public LessonRepo(Context context) {
         mContext = context;
+        mLessonsDao = AppDatabase.from(context).getLessonsDao();
     }
 
     public LiveData<List<Lesson>> getLessons() {
-        return mLessons;
+        return mLessonsDao.all();
     }
 
     public void refresh() {
@@ -42,17 +42,15 @@ public class LessonRepo {
             public void onResponse(Call<List<LessonApi.LessonPlain>> call,
                                    Response<List<LessonApi.LessonPlain>> response) {
                 if (response.isSuccessful() && response.body() != null) {
-                    List<Lesson> result = new ArrayList<>();
                     for (LessonApi.LessonPlain lessonPlain : response.body()) {
                         try {
                             Lesson lesson = map(lessonPlain);
-                            result.add(lesson);
+                            mLessonsDao.insert(lesson);
                             Log.e("LessonRepo", "Loaded " + lesson.getName() + " #" + lesson.getId());
                         } catch (ParseException e) {
                             e.printStackTrace();
                         }
                     }
-                    mLessons.postValue(result);
                 }
             }
 
