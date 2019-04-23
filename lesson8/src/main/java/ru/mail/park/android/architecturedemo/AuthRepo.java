@@ -6,6 +6,14 @@ import android.os.Looper;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
 
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import ru.mail.park.android.architecturedemo.network.ApiRepo;
+import ru.mail.park.android.architecturedemo.network.UserApi;
+
 public class AuthRepo {
 
     public static final String IS_LOGGED_IN = "isLoggedIn";
@@ -20,17 +28,38 @@ public class AuthRepo {
     }
 
     public void login(final String login, final String password, final LoginProgress progress) {
-        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+        UserApi api = ApiRepo.from(mContext).getUserApi();
+        api.getAll().enqueue(new Callback<List<UserApi.UserPlain>>() {
             @Override
-            public void run() {
-                if (TextUtils.equals(login, "test") && TextUtils.equals(password, "test")) {
-                    onAuthSuccess();
-                    progress.onSuccess();
-                } else {
-                    progress.onFailed();
+            public void onResponse(Call<List<UserApi.UserPlain>> call,
+                                   Response<List<UserApi.UserPlain>> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    List<UserApi.UserPlain> users = response.body();
+                    if (hasUserCredentials(users, login, password)) {
+                        onAuthSuccess();
+                        progress.onSuccess();
+                        return;
+                    }
                 }
+                progress.onFailed();
             }
-        }, 3000);
+
+            @Override
+            public void onFailure(Call<List<UserApi.UserPlain>> call, Throwable t) {
+                progress.onFailed();
+            }
+        });
+    }
+
+    private static boolean hasUserCredentials(List<UserApi.UserPlain> users,
+                                              String login,
+                                              String pass) {
+        for (UserApi.UserPlain user : users) {
+            if (TextUtils.equals(user.name, login) && TextUtils.equals(user.password, pass)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private void onAuthSuccess() {
