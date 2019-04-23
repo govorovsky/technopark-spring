@@ -3,6 +3,9 @@ package ru.mail.park.android.architecturedemo;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -36,6 +39,12 @@ public class LessonsFragment extends Fragment {
     }
 
     @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_lessons, container, false);
@@ -63,6 +72,21 @@ public class LessonsFragment extends Fragment {
         mLessonsViewModel
                 .getLessons()
                 .observe(this, observer);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        inflater.inflate(R.menu.lessons_menu, menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == R.id.refresh) {
+            mLessonsViewModel.refresh();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private class LessonsAdapter extends RecyclerView.Adapter<LessonViewHolder> {
