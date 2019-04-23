@@ -1,4 +1,4 @@
-package ru.mail.park.android.architecturedemo;
+package ru.mail.park.android.architecturedemo.repo;
 
 import android.content.Context;
 import android.os.Handler;

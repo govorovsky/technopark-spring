@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
+import ru.mail.park.android.architecturedemo.repo.AuthRepo;
 
 public class LoginViewModel extends AndroidViewModel {
 

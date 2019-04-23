@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import ru.mail.park.android.architecturedemo.database.Lesson;
+import ru.mail.park.android.architecturedemo.repo.LessonRepo;
 
 public class LessonsViewModel extends AndroidViewModel {
 
