@@ -12,12 +12,14 @@ public class MainActivity extends AppCompatActivity implements Router {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        if (needAuth()) {
-            getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.fragment_container, new LoginFragment(), "Login")
-                    .commit();
-        } else {
-            openLessons();
+        if (savedInstanceState == null) {
+            if (needAuth()) {
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.fragment_container, new LoginFragment(), "Login")
+                        .commit();
+            } else {
+                openLessons();
+            }
         }
     }
 
