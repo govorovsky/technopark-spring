@@ -45,14 +45,14 @@ public class FirstActivity extends BaseActivity {
     private void restoreState(Bundle savedInstanceState) {
         if (savedInstanceState != null) {
             String string = savedInstanceState.getString(STATE);
-            mText.setText(string);
+//            mText.setText(string);
         }
     }
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putString(STATE, mText.getText().toString());
+//        outState.putString(STATE, mText.getText().toString());
     }
 
     @Override

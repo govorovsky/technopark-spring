@@ -23,7 +23,6 @@
 
     <TextView
         android:layout_width="wrap_content"
-        android:freezesText="true"
         android:textSize="40sp"
         android:id="@+id/dynamic_text"
         android:layout_height="wrap_content"/>
